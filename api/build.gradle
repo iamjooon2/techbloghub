@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+}
+
+group = 'com'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('snippetsDir', file("build/generated-snippets"))
+}
+
+//configurations {
+//    compileOnly {
+//        extendsFrom annotationProcessor
+//    }
+//}
+
+dependencies {
+    implementation project(":domain")
+    implementation project(":infrastructure")
+    implementation project(":common")
+
+    // spring
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+}
+
+//def generated = 'src/main/generated'
+//
+//sourceSets {
+//    main.java.srcDirs += [generated]
+//}
+//
+//tasks.withType(JavaCompile) {
+//    options.getGeneratedSourceOutputDirectory().set(file(generated))
+//}
+//
+//clean.doLast {
+//    file(generated).deleteDir()
+//}
+//
+//tasks.named('test') {
+//    outputs.dir snippetsDir
+//    useJUnitPlatform()
+//}
